@@ -1,0 +1,337 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper]{article}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8]{inputenc} % make weird characters work
+\usepackage{graphicx}
+\usepackage{parcolumns}
+\usepackage[english,serbian]{babel}
+
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+\usepackage{lipsum}
+\usepackage{listings}
+\usepackage{blindtext}
+\newtheorem{primer}{Primer}[section]
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ 
+  backgroundcolor=\color{white},  
+  basicstyle=\scriptsize\ttfamily,        
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  commentstyle=\color{mygreen},    
+  deletekeywords={...},            
+  escapeinside={\%*}{*)},         
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=PHP,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\begin{document}
+
+\title{Programski jezik PHP\\ \small{Seminarski rad u okviru kursa\\Metodologija stručnog i naučnog rada\\ Matematički fakultet}}
+
+\author{Đorđe Vučković, Tamara Ivanović,\\ Petar Simić, Stefan Stevović\\ djordjevuckovic996@gmail.com, tamara.d.ivanovic@gmail.com,\\ petar\_ 95@yahoo.com, stefanstevovic@yahoo.com}
+
+%\date{9.~april 2015.}
+
+\maketitle
+
+\abstract{
+U ovom radu su ukratko predstavljene osnovne osobine i specifičnosti programskog jezika PHP. Ovde se možete informisati o razvojnom putu samog jezika, njegovim mogućnostima i primenama. Upoznaćete se sa najpoznatijim okruženjima za programski jezik PHP i dobićete detaljna uputstva za njegovu instalaciju na Linux i Windows operativnim sistemima. Kroz primere k\^{o}da koji prate ovaj rad dobićete osnovnu sliku o izgledu samog PHP k\^{o}da.
+
+
+\tableofcontents
+
+\newpage
+
+\section{Uvod}
+\label{sec:uvod}
+
+\textbf{PHP (Hypertext preprocessor)} je popularan skriptni jezik opšte namene. Nastao je iz potrebe njegovog stvaraoca za praćenjem poseta svog vebsajta i tokom godina sve je popularniji kod veb programera\cite{php}. Kako semantika ovog jezika nije striktna, lak je za učenje, što ga čini pristupačnim programerima sa različitim nivoom znanja \cite{PHPCookbook}.
+
+O popularnosti jezika govore podaci analize Github repozitorijuma i projekata. Tokom godina ostaje u prvih 6 jezika po upotrebi. Statistika za period 2012. - 2014. godine je prikazana u tabeli \ref{tab:tabela1}. 2014. godine ispred PHP-a su bili jezici JavaScript, Java, Python i CSS\cite{gitinfo}.
+
+Ovaj rad je namenjen svima koji žele da saznaju osnovne karakteristike PHP-a, šta je ono što ga izdvaja od ostalih, kao i kako da ga pokrenu na svojim računarima. Veliki broj radnih okruženja (eng. framework)\cite{learningPHP} je podržan, ali će fokus biti na njegovim najpoznatijim. Ovaj rad se neće fokusirati na sintaksu i nema za cilj da čitaoca nauči kako da programira u PHP-u, ali za to preporučujemo \cite{learningPHP, PHPCookbook, programmingPHP}.
+
+\begin{table}[h!]
+\begin{center}
+\caption{Učešće PHP projekata na Github-u i pozicija PHP na listi zastupljenosti, u periodu 2012. - 2014. god.}
+\begin{tabular}{|c|c|c|c|} \hline
+period& PHP repozitorijumi& \% zastupljenosti& pozicija\\ \hline
+2012, II kvartal &62336 &11.3 &4\\ \hline
+2012, IV kvartal &62336 &8.1 &4\\ \hline
+2013, II kvartal &83169 &7.6 &5\\ \hline
+2013, IV kvartal &91879 &7.1 &6\\ \hline
+2014, II kvartal &118272 &5.6 &6\\ \hline
+2014, IV kvartal &138771 &6.3 &5\\ \hline
+\end{tabular}
+\label{tab:tabela1}
+\end{center}
+\end{table}
+
+%prošireni podaci tabele, ali zbog izgleda tabele je skraćena
+%\begin{tabular}{|c|c|c|c|c|} \hline
+%period& broj repozitorijuma& PHP repozitorijumi& \% zastupljenosti& pozicija\\ \hline
+%2012, II kvartal &550000 &62336 &11.3 &4\\ \hline
+%2012, IV kvartal &770000 &62336 &8.1 &4\\ \hline
+%2013, II kvartal &1100000 &83169 &7.6 &5\\ \hline
+%2013, IV kvartal &1300000 &91879 &7.1 &6\\ \hline
+%2014, II kvartal &1800000 &118272 &5.6 &6\\ \hline
+%2014, IV kvartal &2200000 &138771 &6.3 &5\\ \hline
+
+
+
+\section{Razvoj programskog jezika PHP}
+\textbf{Rasmus Lerdorf} je 1994. godine napravio programski jezik PHP\cite{php}, međutim danas se on značajno razlikuje od početne verzije. Za potrebe napredka svog privatnog vebsajta i praćenja broja poseta, napisao je niz skriptova u Perl-u, a zatim i dodao mogućnost pristupa bazama podataka i kreiranje jednostavnih veb aplikacija razvojem C skriptova što je činilo prvu verziju. Sledeće godine, Rasmus objavljuje PHP 2.0 koji je kombinacija PHP-a i form interpretera koji je on napisao. Kako je ova verzija bila javno dostupna (eng. open-source), mnogi programeri su mogli da unapređuju PHP. 1997. godine su \textbf{Zeev Suraski} i \textbf{Andi Gutmans} redizajnirali PHP jezgro i objavili \textbf{PHP/FI} \cite{phpfi}.
+
+1997. godine Lerdorf, Suraski i Gutmans počinju da sarađuju na pisanju novog programskog jezika i PHP/FI 2.0 je preimenovan u PHP 3.0. U PHP 3.0 je uključena podrška objektno-orijentisanom programiranju, sintaksa jezika je postala kozistentna, a krajnjim korisnicima je omogućen interfejs za API-je, protokole i višestruke baze podataka. U svom najvećem uspehu PHP 3.0 je bio instaliran na približno 10\% veb servera na Internetu\cite{php}.
+
+
+Andri Gutmans i Zeev Suraski su kreirali “\textbf{Zend Engine}” \cite{zend} čija je uloga bila da popravi performanse kompleksnih aplikacija, kao i modulardnost osnove PHP k\^{o}da. Spoj Zend Engine-a i velikog broja dodatnih karakteristika čine PHP 4.0. Njegove glavne karakteristike su podržavanje većeg broja HTTP sesija i veb servera, izlazno baferovanje, takođe dodati su i novi jezički konstrukti.
+
+2004. godine je izašla verzija 5.0, a godinu dana kasnije verzija 7.0. Ove dve verzije su najzastupljenije, dok prethodne verzije veoma mali broj sajtova koristi. Ovo se može videti na slici \ref{fig:proc_zastupljenosti} koja prikazuje podatke iz 2019. godine prema podacima \cite{stats}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.25]{zastupljenost2019.png}
+\end{center}
+\label{fig:proc_zastupljenosti}
+\caption{Zastupljenost verzija PHP-a}
+\end{figure}
+
+Ključnu ulogu u razvoju PHP-a ima PHP/FI, koji se smatra pretečom današnjeg PHP-a. Takođe, bez C i Perl skriptova razvoj ne bi bio moguć. Detaljno razvojno stablo je prikazano na slici \ref{fig:r_stablo}.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.45]{razvojno_stablo.png}
+\end{center}
+\label{fig:r_stablo}
+\caption{Razvojno stablo PHP-a}
+\end{figure}
+
+\section{Mogućnosti programskog jezika}
+PHP je skriptni jezik opšte namene koji je posebno pogodan za veb razvoj na strani servera, u kom slučaju PHP generalno radi na veb servisu. Svaki PHP k\^{o}d u traženoj datoteci izvršava PHP runtime\cite{php}, obično da bi kreirao dinamičan sadržaj veb stranica ili dinamičke slike koje se koriste na veb stranicama ili drugde. Takođe se može koristiti za skriptovanje komandne linije i aplikacije grafičkog korisničkog interfejsa na strani klijenta (GUI). PHP se može koristiti na većini veb servera, mnogim operativnim sistemima i platformama, a može se koristiti sa mnogim sistemima za upravljanje relacionim bazama podataka (RDBMS). Većina veb hosting provajdera podržava PHP za upotrebu od strane svojih klijenata. Dostupan je besplatno, a PHP grupa obezbeđuje kompletan izvorni k\^{o}d za korisnike koji će graditi, prilaoditi i proširiti za sopstvenu upotrebu.
+
+Izvorno je dizajniran za korišćenje dinamičkih veb stranica, ali PHP se sada fokusira uglavnom na skriptiranje na strani servera i sličan je drugim skriptnim jezicima na strani servera koji pružaju dinamički sadržaj sa veb servera klijentu. PHP je takođe privukao razvoj mnogih softverskih okvira koji pružaju građevinske blokove i strukturu dizajna za promovisanje brzog razvoja aplikacija (RAD). Neki od njih uključuju PRADO, CakePHP, Simfoni, CodeIgniter, Laravel, Iii Framework, Phalcon i Zend Framework, nudeći mogućnosti slične drugim veb okvirima\cite{PHPtheGoodParts}. Kako dinamičko skriptiranje funkcioniše vidi se na slici \ref{fig:server}
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.15]{primer_serverskog_skriptiranja.png}
+\end{center}
+\caption{Dinamička veb stranica: primer serverskog skriptiranja}
+\label{fig:server}
+\end{figure}
+
+Za specifične i naprednije scenarije korišćenja, PHP nudi dobro definisan i dokumentovan način za pisanje prilagođenih ekstenzija u C ili C++. Osim proširivanja samog jezika u obliku dodatnih biblioteka, proširenja pružaju način za poboljšanje brzine izvršavanja tamo gde  je kritična i postoji prostor za poboljšanja korišćenjem pravom kompiliranog jezika. PHP takođe nudi dobro definisane načine za ugrađivanje u druge softverske projekte. Na taj način se PHP može lako koristiti kao interni skriptni jezik za drugi projekat, a takođe obezbeđuje usko povezivanje sa specifičnim internim strukturama podataka projekta.
+
+\section{Osnovne osobine, podržane paradigme i koncepti}
+PHP dozvoljava programerima da napišu ekstenzije u C-u kao i da dodaju funkcionalnost samom jeziku. PHP ekstenzije se mogu kompajlirati statički u PHP ili dinamički učitati tokom izvršavanja. Brojne ekstenzije su napisane kako bi dodale podršku za Windows API, upravljanje procesima na operativnim sistemima sličnim Unix-u, multibajt strune (Unicode), cURL i nekoliko popularnih formata kompresije.
+
+Razne besplatne i open-source biblioteke su uključene u izvornoj distribuciji mada ih koristi i u rezultujućim binarnim build-ovima PHP-a. PHP je u osnovi sistem koji je svestan interneta sa ugradenim modulima za pristup FTP serverima, Microsoft SKL Server i SKLite (koji je ugradena baza podataka), LDAP servere i druge. Brojne funkcije poznate C programerima, kao što su one u stdio familiji, dostupne su u standardnim PHP build-ovima. Ostale PHP funkcije koje su dostupne putem proširenja uključuju integraciju sa IRC-om, dinamičku generaciju slika i Adobe Flash sadržaja, PHP Data Objects(PDO) kao sloj apstrakcije koji se koristi za pristup bazama podataka, pa čak i sinteza govora. Neke od osnovnih funkcija jezika, kao što su one koje se bave nizovima, takođe su implementirane kao proširenja\cite{corePHP}.
+
+Drugi projekti, kao što je \textbf{Zephir}\cite{zephir}, pružaju mogućnost da PHP ekstenzije budu kreirane na jeziku visokog nivoa i kompajlirane u izvorne PHP ekstenzije. Takav pristup, umesto pisanja PHP ekstenzija direktno u C, pojednostavljuje razvoj ekstenzija i skraćuje vreme potrebno za programiranje i testiranje. 
+
+Origialna, potpuna i najraširenija implementacija PHP-a pokreće Zend Engine i poznata je kao PHP. Da bi se razdvojila od drugih implementacija, ponekad se nezvanično zove "Zend PHP". PHP-ov model "\textit{jedan-zahtev-za-skriptom-izvršenje}" i činjenica da je Zend Engine interpreter dovodi do neefikasnosti. Kao rezultat toga, razvijeni su razni proizvodi koji pomažu poboljšanju performansi PHP-a. Kako bi se ubrzalo vreme izvršavanja i da se ne mora kompajlirati PHP izvorni k\^{o}d svaki put kada se pristupi veb stranici, PHP skripte se mogu primeniti u unutrašnjem formatu PHP motora korišćenjem opcode keša. Opcode keš funkcioniše tako što kešira kompajlirani oblik PHP skript (opcodes) u zajedničkoj memoriji kada se skripta pokrene. Jedan od opcode keševa, Zend Opcache\cite{zend}, je ugradenu PHP od verzije 5.5. Drugi primer široko korišćenog opcode cashe-a je alternativni PHP keš (APC)\cite{php}, koji je dostupan kao PECL ekstenzija.
+
+Dok je Zend PHP još uvek najpopularnija implementacija, razvijeno je nekoliko drugih implementacija. Neki od njih su komplajleri koji podržavaju JIT\cite{jit} kompilaciju i stoga nude prednosti u odnosu na Zend PHP na račun nedostatka potpune PHP kompatibilnosti. Alternativne implementacije uključuju sledeće:
+\begin{itemize}
+\item \textbf{HHVM(HipHop Virtual Machine)}\cite{hhvm} - razvijen na Facebook-u i dostupan kao open source, pretvara PHP k\^{o}d  u bajt-k\^{o}d visokog nivoa, koji je obično poznat kao posredni jezik, koji se potom pretvara u k86-64 mašinski k\^{o}d. U vremenu izvršavanja kompajler je pravedan u vremenu (JIT), što rezultira poboljšanjem performansi do 6 puta
+\item \textbf{Parrot}\cite{parrot} - virtuelna mašina dizajnirana da efikasno pokreće dinamičke jezike. Pipp transformiše PHP izvorni k\^{o}d u Parrot posrednu reprezentaciju, koja se zatim prevodi u Parrot-ov bajt k\^{o}d i virtuelna mašina ga izvršava.
+\item \textbf{Phalanger} - sastavlja PHP u bajt k\^{o}d Common Intermediate Language (CIL)
+\item \textbf{Kuercus} - kompajlira PHP u java bajt k\^{o}d.
+\end{itemize}
+
+
+Već je rečeno da je PHP skriptni jezik opšte namene. Pored toga on podržava još mnoge koncepte. Od vezije 5.0 ima jaku podršku za \textbf{objektno-orijentisano programiranje}. To uključuje podršku za nasleđivanje, konstruktore, izuzetke, interfejse, klase i apstraktne klase. Takođe, podržava i funkcije prve klase(eng. first-class functions) što znači da funkcija može biti dodeljena promenljivoj. Korišnički definisane funkcije, kao i ugrađene funkcije mogu biti referisane od strane promenljive i pozivaju se dinamički. Podržava rekurziju, odnosno da funkcija poziva samu sebe, mada kod PHP-a je fokus na iteraciji. Funkcije se mogu prosleđivati kao agumenti tj. funkcije višeg reda i funkcija može vratiti druge funkcije. Od verzije 5.3 uvedena je i podrška za anonimne funkcije sa podrškom za zatvaranje. Verzija 5.4 je dodala mogućnost povezivanja zatvaranja sa opsegom objekta i poboljšanu podršku za callables tako da se mogu koristiti naizmenično sa anonimnim funkcijama u gotovo svim slučajevima. Ove osobine opravdavaju pripadanje \textbf{funkcionalnoj paradigmi} \cite{phpSrbija}. 
+
+\section{Najpoznatija okruženja}
+Na samom početku ovog poglavlja treba da se upoznamo sa terminom \textbf{razvojno okruženje} (eng. framework). Razvojno okruženje predstavlja skup već gotovih komponenti koje čine skelet startne platforme. Ta platforma omogućava da se bude brži i efikasniji pri pisanju programa. Najbitniji faktor je to što se povećava brzina programiranja jer se ne počinje svaki put od nule već su na raspolaganju raznorazni gotovi moduli koji se mogu jednostavno koristiti. Razvojno okruženje čini rad na zahtevnim projektima jednostavnijim, omogućava pisanje čistog k\^{o}da, sugeriše na moguće greške i k\^{o}d će korisniku biti ponovo upotrebljiv.
+
+Postoje razna razvojna okruženja za svaki programski jezik pa tako i za PHP. Koje razvojno okruženje izabrati zavisi najviše od samog projekta. Za jezik PHP najpoznatija razvojna okruženja su Laravel\cite{laravel}, CodeIgniter\cite{codeigniter} i Symfony\cite{symfony}.
+
+\textbf{Laravel} programeri najviše koriste zbog njegove brzine, fleksibilnog rutiranja i mogućnosti upravljanja preko komandne linije. Odlikuje ga jednostavno i intuitivno korišćenje kao i čist i pregledan k\^{o}d. U potpunosti je baziran na MVC arhitekturi (Model Wiew Controler).
+
+\textbf{CodeIgniter} je razvojno okruženje koga krasi bezbednost, poseduje zaštitu od XSS i CSRF napada. Uopšte nije memorijski zahtevan jer zauzima svega par megabajta. Omogućava MVC arhitekturu ali nije striktan po tom pitanju. Poseduje sveobuhvatnu dokumentaciju koja se dobija uz samo razvojno okruženje.
+
+Pored sjajnih osobina poput brzine, fleksibilnosti, ponovno upotrebljivih komponenti razvojno okruženje \textbf{Symfony} karakteriše izuzetna podrška. Osim podrške koju pruža sama firma Sensio, tvorac ovog razvojno okruženje, veliki broj profesionalaca i firmi koristi upravo Symfony, pa je samim tim moguće dobiti odgovore na sva pitanja. Ovo razvojno okruženje podržava trenutne standarde PHP-a i pored toga omogućava korisnicima da koriste delove vlastitog softvera, bez da koriste celo razvojno okruženje.
+
+\section{Instalacija}
+Za kreiranje interaktivnih veb stranica i izvršavanje PHP programa neophodan je server koji podržava PHP. Prilikom samog razvoja bilo kog PHP projekta komunikacija sa tim serverom je veoma česta, stoga je izuzetno nepraktično stalno komunicirati sa nekim udaljenim serverom. Iz tog razloga se preporučuje instalacija lokalnog servera. Osim servera potrebna je i baza podataka. Naravno osim servera i baze, potrebno je instalirati i sam jezik PHP. Na novijim operativnim sistemima PHP uglavnom dolazi uz sam sistem, ali će ovde instalacija biti objašnjena od samog početka, kao da ništa od potrebnog nije instalirano.
+
+Dakle, potrebni su sam PHP programski jezik, server i baza podataka. Postoji mogućnost da se zasebno svaka od navedenih stavki instalira i podešava, ali postoji i mnogo lakši način, a to su LAMP(linux apache mySql PHP) \cite{lamp} i WAMP(windows apache mySql PHP) \cite{wamp} serveri. 
+
+Na operativnom sistemu \textbf{Windows} sama instalacija se sastoji od preuzimanja WAMP servera sa stranice:\url{http://www.wampserver.com/en/} , zatim sledi pokretanje preuzetog fajla koje automatski pokreće instalaciju celog paketa. Sam proces nadalje je automatizovan i WAMP server paket stiže sa najnovijim verzijama Apache-a, MySQL-a i PHP-a. Nakon procesa instalacije biće kreirana prečica ka WampServer-u kao i  folder www, obično na putanji c:\textbackslash \textbackslash wamp\textbackslash \textbackslash www. Nakon toga u folderu www potrebno je kreirati poddirektorijum koji će služiti za smeštanje PHP fajlova. Na primer, kreiran je fajl 1.php. Moguće je otvoriti ga u veb pregledaču, tako što se u meniju WampServer-a klikne na link “localhost” ili se u pregledaču ukuca http://localhost/1.php.
+
+Kod operativnog sistema \textbf{Linux} instalacija se vrši preko terminala i zahteva instaliranje svake komponente pojedinačno, što je prikazano u \ref{instalacija}. 
+
+\begin{lstlisting}[language=bash, caption={Pokretanje instalacije na Linux operativnom sistemu}, label={instalacija}]
+sudo apt-get update #update sistema
+sudo apt-get install apache2 #instalacija Apache-a
+sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql #instalacija MySQL-a
+sudo mysql_install_db #instalacija MySQL servera
+sudo /usr/bin/mysql_secure_installation #pokretanje skripte za podesavanje MySQL-a
+sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt #instalacija PHP-a
+
+\end{lstlisting}
+Po završetku instalacije MySQL-a može biti traženo da se postavi root šifra što je i potrebno uraditi.
+
+PHP takođe sadrži veliki broj korisnih biblioteka i modula koji se mogu dodati na  server. Za izlistavanje potrebno je pokrenuti komandu “apt-cache search php5-” i biće prikazani svi moduli. Za instalaciju nekog od tih modula služi komanda “sudo apt-get install <ime\_ modula>”. Nakon što je instaliran LAMP može se pokrenuti prethodno napravljeni program, npr. 1.php. Potrebno je smestiti ga u /var/www direktorijum i može se pokrenuti preko pregledača ukoliko se ukuca http://localhost/1.php. 
+
+\section{Primer k\^{o}da}
+\begin{primer}
+Primer kako se pomoću PHP-a može konektovati na bazu podataka, izvršiti upit i ispitati dobijene rezultate. Cilj u ovom primeru \ref{primer_koda} je pronaći sve studente sa zadatim imenom i prezimenom i ispitati njihov datum rođenja.
+\end{primer}
+
+
+\begin{lstlisting}[caption={Primer PHP k\^{o}da},frame=single, label=primer_koda]
+<?php
+	//uspostavljanje konekcije sa bazom podataka
+	if(mysqli_connect_errno()){
+		die("Problem sa povezivanjem: ".mysqli_connect_error());
+	}
+	//deklarisanje promenljivih i ucitavanje podataka
+	$ime = $_GET['ime'];
+	$prezime = $_GET['prezime'];
+	//formulisanje i izvrsavanje upita
+	$upit = " select datum_rodjenja from dosije where ime = '$ime' and prezime = '$prezime' ";
+	//rezultat upita se smesta u promenljivu rezultat
+	$rezultat = mysqli_query($veza, $upit) or die("Problem prilikom izvrsavanja upita: ".mysqli_error($veza));
+	
+	//racunanje broja redova rezultata (broj studenata sa zadatim imenom i prezimenom)
+	$broj_pojavljivanja = mysqli_num_rows($rezultat);
+	if($broj_pojavljivanja == 0){
+		echo "Nema studenata koji se zovu $ime $prezime.";	
+	}
+	else{
+		//ukoliko ima studenata ispisujemo ih	
+		echo "<ul>";
+		for($i=0; $i<$broj_pojavljivanja; $i++){
+			$red = mysqli_fetch_assoc($rezultat);
+			echo "<li>";
+			echo $red['ime']['prezime']['datum_rodjenja'];
+			echo "</li>";		
+		}
+		echo "</ul>";
+	}
+	//raskidamo konekciju sa serverom
+	mysqli_close($veza);
+?>
+\end{lstlisting}
+Sav PHP k\^{o}d se piše između “<?php“ i “?>“, slično kao tagovi pri pisanju html k\^{o}da. Promenljive deklarišemo sa prefiksom “\$“ a naredbom “echo“ vršimo ispis. \$\_ GET metod smo koristili kako bismo preneli vrednosti promenljivih kroz veb stranicu do našeg k\^{o}da. Vrednosti tih promenljivih se dodaju u URL stranicu, na primer ako bismo želeli da izlistamo sve studente koji se zovu Marko i prezivaju Marković, to bismo uradili tako što bismo u URL adresu dodali ?ime=Marko\& prezime=Markovic.
+
+\section{Specifičnosti}
+
+Ono što je veoma specifično za ovaj jezik jeste to što nema striktnu sintaksu koja prati veliki broj jezika. Na primer, sledeći fragment k\^{o}da možemo zapisati na dva razlicita načina. Kao što je prikazano u \ref{fig:stand_alt} standardni pristup koristi vitičaste zagrade, dok je u alternativnom pristupu fokus na elseif grananju. 
+
+\begin{figure}[h]
+		\centering
+		\begin{minipage}{0.35\textwidth}
+\begin{lstlisting}
+<?php
+if($a > 0){
+	echo "a ima pozitivnu vrednost";
+} elseif($a == 0){
+	echo "a je nula";	
+} else{
+	echo "a ima negativnu vrednost";	
+}
+?>	
+\end{lstlisting}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.35\textwidth}
+\begin{lstlisting}
+<?php
+if($a > 0):
+	echo "a ima pozitivnu vrednost";
+elseif($a == 0):
+	echo "a je nula";	
+else:
+	echo "a ima negativnu vrednost";	
+endif;
+?>	
+\end{lstlisting}
+		\end{minipage}
+		\caption{Primer dva fragmenta koda standardni pristup (levo) i alternativni pristup (desno).}
+		\label{fig:stand_alt}
+\end{figure}
+
+
+
+\textbf{Imenski prostor} (eng. namespace) \cite{phpSrbija} je uveden od verzije 5.3 i prevashodno je zamišljen radi rešavanja konflikata oko istoimenih metoda i funkcija, kako bi mogle da se koriste u okviru istog projekta. Ovo je posebno pogodno u slučaju da se radi o kompleksnim projektima, koji su raspoređeni po različitim datotekama i kada u razvoju aplikacije učestvuje grupa programera. Za deklarisanje imenskog prostora koristi se ključna reč \textbf{namespace}. Dozvoljeno je koristiti više imenskih prostora u okviru istog programa, čak i iste datoteke.
+
+Još jedan veoma bitan koncept u radu sa PHP programima jeste rad sa formama. Forma je zapravo deo HTML strukture za grupisanje različitih elemenata čija je funkcija prikupljanje podataka od korisnika. U zavisnosti od akcije korisnika, dobijena informacija se može proveriti kod korisnika, zato se može proslediti kao zahtev serveru, eventualno na ponovnu proveru i kasniju obradu, a u zavisnosti od potrebe na kraju se može poslati i neka vrsta povratne informacije. Forme se koriste, na primer, kod poručivanja hrane u piceriji preko interneta. Popunjavamo formular gde biramo vrstu pice, dodatke, adresu gde će se pica dostaviti itd. Nakon obrade i čitanja podatka iz forme, šalje se odgovor da je porudžbina primljena i da ce pica ubrzo stići.
+
+Jezik PHP se odlikuje ogromnim brojem različitih klasa koje u mnogome olakšavaju rad programerima. Jedna veoma bitna klasa je “PDO (PHP Data Object)”\cite{PHPtheGoodParts, phpSrbija} koja se koristi za povezivanje sa SQL bazama podataka. Ta klasa obezbeđuje sloj apstrakcije za skup upravljačkih programa za baze podataka kao što su MySQL, PostgreSQL i MSSQL. To znači da ma bilo koju bazu podataka koristili, ako je PDO podržava, možemo koristiti iste funkcije za izvršavanje istih operacija nad bazom podataka. To čini k\^{o}d i samu aplikaciju portabilnom u smislu da se može koristiti u različitim bazama podataka bez nekakve modifikacije samog k\^{o}da.
+
+Još jedna veoma korisna i zamiljiva klasa je DateTime klasa \cite{PHPtheGoodParts, phpSrbija} koja služi za reprezentaciju vremena i datuma. Pored jednostavnog definisanja i ispisa trenutnog vremena koje je predstavljeno u \ref{datum}, ova klasa sadrži ogroman broj različitih funkcija za rad sa datumima poput izdvajanja dana, meseca, godine iz datuma i postavljanje vremenskih zona. 
+
+\begin{lstlisting}[caption={Primer iz klase DateTime},frame=single, label=datum]
+$d = new DateTime('2019-01-01T15:03:01.012345z')
+echo $d -> format('Y-m-d\TH:i:s.u') //2019-01-01T15:03:01.012345
+\end{lstlisting}
+
+Ono što se u jeziku PHP dosta koristi jesu \textbf{kolačići} (eng. cookies)\cite{PHPtheGoodParts, phpSrbija} koji se često koriste za identifikaciju korisnika. Kolačić je mala datoteka koju server ugrađuje na računar korisnika. Svaki put kada isti računar zahteva stranicu, ona će takođe poslati i kolačić. Pomoću PHP-a možemo kreirati i dohvatiti vrednosti kolačića. Funkcija koja postavlja vrednost kolačića je data u primeru \ref{kolacici}.
+
+\begin{lstlisting}[caption={Funkcija za postavljanje kolacica},frame=single, label=kolacici]
+setcookie(name, value, expire); //postavljanje kolacica
+setcookie("user", "", time() - 3600); //brisanje kolacicaica
+\end{lstlisting}
+
+Pristup disku je spor dok je pristup mreži još sporiji. Baze podataka obično koriste oba. Korišćenje lokalnog keša izbegava opterećenje mreže i pristupa disku. Kombinujući ove pristupe i dobićemo memcached (sistem za memorisanje objekata distribuirane memorije) \cite{tips}. Ako naša aplikacija nije distribuirana na više servera, verovatno nam neće trebati memcached. Jednostavnije pristupe keširanju su na primer serijalizovanje podataka i čuvanje u privremenoj datoteci, na primer - mogu eliminisati mnogo redundantnih podataka na svakom pojedinačnom zahtevu\cite{phpSrbija}. Primer keširanja je dat primerom \ref{kesiranje}.
+
+\begin{lstlisting}[caption={Primer keširanja},frame=single, label=kesiranje]
+<?php
+$feed = apc_fetch('news');
+if ($feed === FALSE) {
+    $feed = file_get_contents('http://example.org/news.xml');
+    // Cuvanje podataka u deljenoj memoriji 5 minuta (5*60 sekundi)
+    apc_store('news', $feed, 300);
+}
+// Uradi nesto sa $feed.
+?> 
+\end{lstlisting}
+
+
+
+
+\section{Zaključak}
+\label{sec:zakljucak}
+
+Programski jezik PHP značajno olakšava veb programiranje i zbog toga je među jednim od najpopularnijih programskih jezika današnjice. Pored toga rad sa bazama podataka je ono što većini njegovih korisnika olakšava rešavanje problema koje rešavaju. Mogućnosti ovog jezika su velike, međutim kroz ovaj rad su predstavljene samo one koje ga ističu u odnosu na druge. Takođe ovim radom smo istakli sve ono što bi programere koji se do sad nisu susreli sa  PHP-om zaiteresovalo da počnu da ga koriste.
+
+
+\addcontentsline{toc}{section}{Literatura}
+\appendix
+\bibliography{seminarski} 
+\bibliographystyle{plain}
+
+
+
+\end{document}
