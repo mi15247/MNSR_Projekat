@@ -1,0 +1,542 @@
+
+
+ % !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{report}
+
+\usepackage[T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8x,utf8]{inputenc} % make weird characters work
+\usepackage[serbian]{babel}
+%\usepackage[english,serbianc]{babel}
+\usepackage{amssymb}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\odgovor}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\title{Programski jezik PHP\\ \small{Đorđe Vučković, Tamara Ivanović, \\ Petar Simić, Stefan Stevović}}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Uputstva}
+\emph{Prilikom predavanja odgovora na recenziju, obrišite ovo poglavlje.}
+
+Neophodno je odgovoriti na sve zamerke koje su navedene u okviru recenzija. Svaki odgovor pišete u okviru okruženja \verb"\odgovor", \odgovor{kako bi vaši odgovori bili lakše uočljivi.} 
+\begin{enumerate}
+
+\item Odgovor treba da sadrži na koji način ste izmenili rad da bi adresirali problem koji je recenzent naveo. Na primer, to može biti neka dodata rečenica ili dodat pasus. Ukoliko je u pitanju kraći tekst onda ga možete navesti direktno u ovom dokumentu, ukoliko je u pitanju duži tekst, onda navedete samo na kojoj strani i gde tačno se taj novi tekst nalazi. Ukoliko je izmenjeno ime nekog poglavlja, navedite na koji način je izmenjeno, i slično, u zavisnosti od izmena koje ste napravili. 
+
+\item Ukoliko ništa niste izmenili povodom neke zamerke, detaljno obrazložite zašto zahtev recenzenta nije uvažen.
+
+\item Ukoliko ste napravili i neke izmene koje recenzenti nisu tražili, njih navedite u poslednjem poglavlju tj u poglavlju Dodatne izmene.
+\end{enumerate}
+
+Za svakog recenzenta dodajte ocenu od 1 do 5 koja označava koliko vam je recenzija bila korisna, odnosno koliko vam je pomogla da unapredite rad. Ocena 1 označava da vam recenzija nije bila korisna, ocena 5 označava da vam je recenzija bila veoma korisna. 
+
+NAPOMENA: Recenzije ce biti ocenjene nezavisno od vaših ocena. Na osnovu recenzije ja znam da li je ona korisna ili ne, pa na taj način vama idu negativni poeni ukoliko kažete da je korisno nešto što nije korisno. Vašim kolegama šteti da kažete da im je recenzija korisna jer će misliti da su je dobro uradili, iako to zapravo nisu. Isto važi i na drugu stranu, tj nemojte reći da nije korisno ono što jeste korisno. Prema tome, trudite se da budete objektivni. 
+\chapter{Recenzent \odgovor{--- ocena: 4} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+U radu se govori o nastanku PHP programskog jezika sa akcentom na razvoj kroz verzije. O načinima rada u PHPu statičkom i dinamičkom sa većim osvrtom na dinamički. Tu su okruženja sa specifikacijom prevođenja, lepe instrukcije instalacije uz objašnjenje i elegantan prikaz osnovnih koncepata jezika kroz samo jedan primer. Na kraju su nabojani neki specifični koncepti i dat je njihov opis.
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+
+\begin{itemize}
+\item  U sažetku i uvodu bi trebalo ne mešati pasiv i aktiv (futur).
+\item  ,,Kroz primere koda ... dobićete sliku o izgledu samog koda", rečenicu treba preformulisati, dovoljno je reći da ima kodova, čitalac vec zna da će na osnovu njih steći sliku o tome što vidi.
+
+\odgovor{Sažetak i uvod su prebačeni u pasiv, takođe je i naredna zamerka preformulisana.}
+
+\item U uvodu je referenca 5 nije dovoljno precizna, potrebno je 4 klika da se dodje do izvora.
+
+\odgovor{Referenca je precizirana}
+
+\item Za referencu broj 20 možda bolje precizirati pasus i stranicu.
+
+
+\item Ne vidim zašto je bitno za uvod u rad koji su jezici bili 2014. godine ispred njega po upotrebi, kada su jezici različite namene i kada nigde u tekstu neće biti spomenuti više.
+
+\odgovor{To predstavlja zanimljivost koju smo pronašli i želeli smo da prikažemo zastupljenost programskog jezika koji predstavljamo.
+Vremensko razdoblje za koje smo se vezali u toj tabeli nije idealno, ali samo za taj period smo pronašli podatke.}
+
+\item Nigde u radu ne piše šta je Form Interpreter, trebalo bi da prvi put bude objašnjeno i da se posle koristi baz pisanja u zagradi. Takodje stiče se utisak da je FI različito od alata za rad sa bazama, treba uvek koristiti isti naziv.
+
+\odgovor{}
+
+\item Mislim da treba napraviti jasnu razliku izmedju imena PHP/FI i PHP. Rasmus je 1994. godine napravio PHP Tools gde je PHP čak ima različito značenje od značenja u nazivu programskog jezika. PHP/FI je nastao kasnije kada je dodat alat za lako korišćenje SQL-a i dalje sa značenjem ,,Personal Home Page" i tek kasnije je nastao PHP i nije samo ,,FI" izbačeno iz imena već i PHP ima novo značenje ,,PHP: Hypertext preprocessor". 
+
+\odgovor{}
+
+\item ,,da popravi performanse kompleksnih aplikacija" ne govori dovoljno o tome koji je način Zend doprineo razvoju PHP-a. Meni zvuči kao značajnija informacija da se spomene parser i mogućnost debagovanja.
+
+\odgovor{U rad su dodate informacije o Zend Engine-u. Detaljnije je opisana njegova uloga.}
+
+\item Mislim da se ne može reći ,,većeg broja HTTP sesija" sesije kao koncept su podržane, ne veći broj njih. Takođe tu mi fali fusnota ili referenca na HTTP sesije.
+
+\odgovor{}
+
+\item Referenca 6 nije dovoljno precizna.
+
+\odgovor{Dodata je preciznija referenca.}
+
+\item "ključnu ulogu u razvoju PHP-a ima php/fi" - ovo je prekasno rečeno, ne ide hronoloski. Izbaciti ovaj deo ili ga staviti ranije.
+
+\odgovor{}
+
+\item Hronološko stablo odlicno.
+\item ,,korišćenjem pravom kompiliranog jezika." ovaj deo mi nije jasan, treba preformulisati.
+
+\odgovor{}
+
+\item Mislim da nije na OS sličnim Unix-u, već na Unix zasnovanim OS, ali nema reference da to proverim.
+
+\odgovor{Prepravljena rečenica. U pravu je recenzent.}
+
+\item ,,mada ih koristi i u ..." ko ih koristi? Već je spomenuto da se moze učitati dinamički tokom izvršavanja
+
+\odgovor{}
+
+\item Drugi put se pominje Zend, čitalac je vec upoznat sa time. Priča se o nedostatku efikasnosti u odeljku ,,Osnovne osobine, podržane paradigme i koncepti", a prethodno je rečeno da Zend postoji upravo da bi nadomestio performanse kompleksnih aplikacija, kontradiktorno je i treba to ispraviti.
+
+\odgovor{}
+
+\item Šta je PHP motor?
+
+\odgovor{}
+
+\item Jednom preveden pojam "opcodes" moze se koristiti u daljem tekstu na srpskom.
+
+\odgovor{}
+
+\item Da li se bajt-kod uvek pretvara u k86-64 mašinski kod ili zavisi od sistema?
+
+\odgovor{}
+
+\item ,,u vremenu izvrsavanja kompajler je preveden u vremenu" -> preformulisati.
+
+\odgovor{}
+
+\item Šta je Pipp?
+
+\odgovor{}
+
+\item Pri nabrajanju alternativnih implementacija, možda prvo navesti u šta kompajliraju PHP kod, jer im je to zajedničko, a potom pisati dodatno za određene
+
+\odgovor{}
+
+\item Šta je podrška za zatvaranje? Da li se misli na zatvorenje? Objasniti.
+
+\odgovor{}
+
+\item ,,callables" treba referenca šta je to.
+
+\odgovor{}
+
+\item Skroz je bespotrebno objašnjenje šta je to okruzenje, svi znamo šta je to, već je pominjano, i da ne znamo može samo da se stavi referenca nepotrebno je da u radu o PHP definicija okruženja oduzima koliko i pasus o paradigmama.
+
+\odgovor{Ovaj rad nije namenjen isključivo programerima i ljudima koji su detaljnije upoznati u sam proces programiranja, pa smo shodno tome odlučili da ukratko objasnimo šta je to razvojno okruženje. Smatramo da će samim početnicima ta informacija biti od koristi.}
+
+\item Nepotrebno spomenuti da postoje okruženja za svaki programski jezik.
+
+\odgovor{Ne vidimo razlog zašto to ne bi bilo navedeno.}
+
+\item Instalacija, primer koda i specifičnosti su lepo objašnjeni.
+
+\item ,,namespace" možda nema potrebe objašnjavati ovako detaljno, ista razlozi kao za ,,framework"
+
+\odgovor{Imenski prostor je već malo delikatniji pojam u odnosu na razvojno okruženje, pa smatramo da treba biti objašnjen čitaocima. }
+
+\item ,,olaksava resavanje problema koje resavaju" -> u kom smislu, ovo je nedorečeno.
+
+\odgovor{Cilj ove rečenice je bio da se kaže da je glavna olakšica rad sa bazama podataka. Konfuzna rečenica je prepravljena.}
+
+\item Poslednja rečenica je tačna, rad je prilagodjen onima koji ne znaju mnogo o PHP-u i zaista zainteresuje čitaoca, čak se može dodati da zainteresuje čitaoca da pise biblioteke i prosirenja dakle ne u samom PHP-u, već i C (što je po meni vrlo lepo istaknuto u ovom radu)
+\end{itemize}
+
+
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+\begin{itemize}
+\item Prepraviti navodjenje razdoblja medju godinama 2012--2014.
+\item Ne počinjati rečenicu godinom.
+
+\odgovor{Prepravljeno.}
+
+\item Budući da je rad pisan za studente informatike nema potrebe da se objašnjavaju neki pojmovi. Dovoljno je samo ih koristiti na srpskom jeziku. Ti pojmovi su: open-source, framework, GUI, RAD (za to može referenca), rekurzija.
+
+\odgovor{Osim studenata informatike, možda i neki početnici pročitaju ovaj rad. Zbog toga su svi pojmovi za koje smo smatrali da su bitni objašnjeni.}
+
+\item Preporuka za literaturu odakle da se uči PHP bi trebalo da bude drugačije naveden, ne kao referenca, već i dodatno ime knjige i sajta.
+
+\odgovor{}
+
+\item Caption treba da je ili uvek ispod ili uvek iznad objekata.
+
+\odgovor{}
+
+\item Caption od tabele 1: ,,i pozicija PHP" treba ,,i pozicija PHP-a"
+
+\odgovor{Ispravljeno.}
+
+\item ,,međutim", treba ,,međutim, "
+
+\odgovor{Ispravljena slovna greška.}
+ 
+\item ,,napredka", treba ,,napretka"
+
+\odgovor{Ispravljena slovna greška}
+
+\item Imena ljudi napisati kako se čita, a u zagradi samo prvi put navesti kako se piše na njihovom maternjem jeziku.
+
+\odgovor{}
+
+\item Slika 1 izgleda kao da ima 2 captiona zbog atpisa na samoj slici. Trebalo bi prepraviti da to bude iseceno i napisano u okviru pravog captiona.
+
+\odgovor{}
+
+\item ,,prilaoditi", treba ,,prilagoditi" 
+
+\odgovor{Ispravljena slovna greška.}
+
+\item ,,takođe" treba ,, , takođe"
+
+\odgovor{Ispravljena slovna greška.}
+
+\item ,,građevinske blokove" prevesti drugacije
+
+\odgovor{}
+
+\item ,,softverski okvir"  mozda bolje okruzenje
+
+\odgovor{}
+
+\item Slika 3 bi trebalo da je prepravljena tako da bude cela na srpskom, takođe očigledno je da je skinuta sa interneta, mislim da treba navesti odakle je skinuta
+
+\odgovor{}
+
+\item ,,scenarije korišćenja" -> upotrebiti drugi izraz, ovo nije u stilu naučnog rada
+
+\odgovor{}
+
+\item ,,u PHP" treba ,,u PHP-u"
+
+\odgovor{Ispravljeno.}
+
+\item Prevesti "buildovima"
+
+\odgovor{}
+
+\item ,,sa ugradenim modulima" i ,,ugradena baza podataka" fali đ
+
+\odgovor{Ispravljene slovne greške.}
+
+\item Fale reference za sve nabrojane servere (Microsoft SKL, SKLite, LDAP)
+
+\odgovor{}
+
+\item ,,stdio familiji" - pre bih rekla ,,stdio zaglavlju"
+\item ,,php build" -> ovo ili prevesti kao objektni fajl ili dati referencu ukoliko je to nesto drugo
+\item Fali referenca za IRC
+\item ,,dinamicku generaciju slika" reč generaciju zvuci kao da je imenica ovde, preformulisati
+
+\item ,,Zend PHP" fale otvoreni navodnici
+
+\odgovor{Ispravljeno.}
+
+\item Otvaranje navodnika u skladu sa srpskim jezikom, dole
+
+\odgovor{Ispravljeno.}
+
+\item Fali referenca za "CIL" i treba prevesti
+
+\item ,,korišnički" treba "korisnički"
+
+\odgovor{Ispravljena slovna greška.}
+
+\item ,,(Model View Controler)" -> ,,(eng .Model View Controller)"
+
+\odgovor{Ispravljeno.}
+
+\item Nije u stilu rada reci da razvojno okruzenje "krasi" neka osobina
+
+\odgovor{Promenjeno u ‚‚odlikuje".}
+
+\item ,,tvorac ovo razvojno okruzenje" treba ,,razvojnog okruzenja"
+
+\odgovor{Ispravljene slovne greške.}
+
+\item Previše je reći da je moguće dobiti odgovore na sva pitanja
+\odgovor{Generalno kompanija Sensio za cilj ima baš to, da se može dobiti odgovor na svako pitanje vezano za njihovo okruženje.
+Zbog toga smo mi to uvrstili u naš rad.}
+
+\end{itemize}
+
+
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+Da, rad je odgovorio na temu. Kroz rad se stiče utisak koje su bile potrebe za nastanak jezika, kako je nastao, kako se razvijao i kako se dalje može razvijati. Pritom su spomenuti i neki osnovni koncepti, dovoljni za prepoznavanje jezika i uvidjanje načina njegove primene.
+\item Da li je nešto važno propušteno? \\
+Mislim da nije ništa izostavljeno izuzev doprinosa Zend Engin-a PHP-u.
+\item Da li ima suštinskih grešaka i propusta?\\
+Istorijski razvoj navodi na čitanje literature, medjutim sam tekst ima netačnih informacija oko imena PHP-a na primer. Na primer oko toga šta je Rasmus napravio (detaljnije opisano u primedbama krupnim)
+\item Da li je naslov rada dobro izabran?\\
+Naslov odgovara temi. Možda je mogao malo da bude precizniji tako da naznačuje da neće biti pronadjen nikakav tutorial unutra za učenje programiranja u ovom jeziku.
+\item Da li sažetak sadrži prave podatke o radu?\\
+Apsolutno da. Navedene jesu osnovne osobine, lepo je rečeno da će steći samo utisak o izgledu koda, ne i znanje programiranja u njemu, i instalacija jeste vrlo detaljno opisana, naročito početak gde se lepo objašnjava zašto je sve to potrebno. Ako bi se gledalo da se nadje neka zamerka onda evo možda da se od primera očekuje nekoliko većih imena da se navede koji su to konkretno veliki projekti radjeni u PHP-u i da se naznači da opis okruženja nije detaljan.
+\item Da li je rad lak-težak za čitanje?\\
+Rad ima odeljke koji jesu i odeljke koji nisu jednostavni. Instalacija, primer koda i specifičnosti su odlično napisani. Sažetak, najpoznatija okruženja, zaključak i poslednji pasus četvrtog odeljka su laki za čitanje ali su pisani više u stilu romana nego seminarskog rada (npr, da razvojno okruženje ,,krasi" bezbednost). Razvoj (koji ima greške) i uvod (koji ne odgovara radu) su jako lepo potkrepljeni referencama i prelazak u odeljke 3 i 4 se znatno otežava zbog njihovog nedostatka. 
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+U trećem i četvrtom poglavlju je predznanje izuzetno potrebno zbog gomile novih izraza i nedostatka referenci. Za peto poglavlje već manje, dok za instalaciju, kod i specifičnosti nije potrebno uopšte dodatno predznanje. 
+\item Da li je u radu navedena odgovarajuća literatura?\\
+Ona koja je navedena je u redu, medjutim nije dovoljno precizirano gde se nalazi odredjena informacija, pa se provera i dodatno informisanje otežava naročito u literaturi pod rednim brojem 20
+\item Da li su u radu reference korektno navedene?\\
+U većini slučajeva jesu, a sa nekima ja lično nemah uspeha da proverim. Bilo je teško naći odakle je informacija izvučena.
+\item Da li je struktura rada adekvatna?\\
+Struktura rada je adekvatna. Prelazi izmedju različitih odeljaka su dobri, eventualno je bilo problema sa Zend Engin-om koji je dva puta uvodjen u rad, sa Form interpreterom o kome je pisano više puta jednom na srpskom a jednom na eng. kao da su dve različite stvari i sa dinamičkim programiranjem i objektnim fajlovima gde se završi priča a posle se ponovo vrati na nju i gde se naizmenično koriste termini build i opcode a pritom nigde nisu objašnjeni
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+Da. 
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+Jesu, naročito slika razvojnog stabla. 
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+ e) skoro neupućeni\\
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+Nikada ne programirah u PHP-u, ali me na fakultetu okružuju ljudi koji se time bave, tako da ponekad u razgovoru slušam o tome. Takodje zbog nekih predmeta na fakultetu (UVIT) imam utisak o tome šta je jezik i čemu služi, ali moje znanje ne prevazilazi ono što je ovde napisano (makar pre čitanja). 
+
+\chapter{Recenzent \odgovor{--- ocena: 4} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+Rad je posvećen PHP jeziku, njegovim karakteristikama i značaju. Opisuje nastanak, razvoj i popularnost jezika. Upoznaje nas sa njegovim mogućnostima i načinima primene. Objašnjava sličnosti sa drugim programskim jezicima i paradigmama. Pruža uvid u njegove specifičnosti i daje nam primer koda. Prikazuje načine za instalaciju na Linux i Windows operativnim sistemima i izdvaja najpoznatija razvojna okruženja jezika.
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+Delovi teksta su neujednačeni po stilu pisanja. Ima ponavljanja i nepotrebnih delova teksta. U više navrata se pominje da je PHP skript jezik (poglavlja 1, 3, 4). U poglavlju 5 nepotrebno je opisivati šta su to razvojna okruženja. Rečenice ne treba počinjati godinom (poglavlje 2). Ceo rad je bolje podeliti na manje celine korišćenjem podnaslova. Tako se poboljšava pregled i struktura rada.
+
+\odgovor{Rečenica da je PHP skript jezik opšte namene treba da stoji u uvodu. U poglavlju 3 je suvišna i nju smo izbacili, a u poglavlju 4
+je skroz u redu da stoji tu jer se napominje da pored toga poseduje još nešto. Šta su to razvojna okruženja je sigurno jasno svima nama, ali možda će ovaj rad da pročita i neki početnik, stoga je primereno da stoji objašnjeno ukratko šta je to razvojno okruženje.
+Rečenice koje su počinjale godinom su izmenjene, promenjena je samo struktura dok je suština ostala ista.}
+
+Rečenice su duge i nejasne (poglavlja 2, 8). Potrebno ih je skratiti i bolje sastaviti (poglavlje 2 - druga rečenica, poglavlje 8 - treći pasus, treća rečenica). Poglavlja 3 i 4 su teška za čitanje. Rečenice su nerazumne. U poglavlju 3, poslednji pasus, druga rečenica, nejasno je u kom smislu je upotrebljena reč "pravom". Možda se misli na "pravi". U istom poglavlju bolje je naći neki drugi izraz umesto "građevinski blokovi" \ u drugom pasusu. U poglavlju 4 su korišćeni izrazi koji nisu kasnije objašnjeni, kao "binarni build-ovi", "podrška za callables" \ i "PHP motor". Takođe, u ovom poglavlju, četvrti pasus, prva rečenica je nejasna. 
+
+\odgovor{Preformulisana je rečenica iz poglavlja 8 na koju je skrenuta pažnja. Suština rečenice je ista kao prvobitno, samo je bolje struktuirana.}
+
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+Slovne greške u pisanju reči GitHub (poglavlje 1), "napretka"\ umesto "napredka"\ (poglavlje 2), "prilagoditi"\ umesto "prilaoditi"\ (poglavlje 3), "ugrađen u"\ umesto "ugradenu"\ (poglavlje 4), "kompajleri"\ umesto "komplajleri"\ (poglavlje 4), "argumenti"\ umesto "agumenti"\ (poglavlje 4), "će"\ umesto "\ ce"\ (poglavlje 8), "jednostavniji pristupi"\ umesto "jednostavnije pristupe"\ (poglavlje 8), "\ zainteresovalo"\ umesto "\ zaiteresovalo"\ (poglavlje 9). Na pojedinim mestima u poglavlju 4 "đ" je pisano bez crtice. Fali tačka na kraju drugog pasusa u poglavlju 3 i u poglavlju 4 kod prve tačke nabrajanja. U poglavlju 5 fale zarezi u poslednja dva pasusa. Pre veznika "ali"\ i u prvoj rečenici poslednjeg pasusa posle reči "komponenti". Zarezi fale i u poglavlju 9 posle "pored toga"\ i "takođe".
+
+\odgovor{Sve slovne i gramatičke greške su ispravljene. Hvala recenzentu na pažljivom čitanju!}
+
+Ako želite da naglasite neki izvor podataka, pored referenci stavite na šta se odnose, umesto same upotrebe referenci (poglavlje 1, 2). U poglavlju 8 se savetuje da se izbaci reč "veoma"\ u prvoj rečenici. U istom poglavlju, u naslovu primera za listing 3 se savetuje korišćenje izraza "primer upotrebe klase"\ ili nekog drugog prikladnog izraza umesto "primer iz klase". U osmom pasusu istog poglavlja "i dobićemo"\ je potrebno zameniti na primer sa "\ dobijamo".
+Notacija u literaturi je neusaglašena. Koristiti celo ime i prezime autora ili početno slovo imena autora i prezime. Literatura nije sortirana ni po pojavljivanju, ni po prezimenu autora.
+
+\odgovor{Reč ‚‚veoma" u prvom pasusu mislimo da je na mestu. Služi da ilustruje važnu specifičnost. ‚‚Primer iz klase" je zamenjeno sa
+primer upotrebe klase. Zamenjeno je i ‚‚dobićemo" sa dobijamo.}
+
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+Da, rad je u većoj meri odgovorio na temu.
+\item Da li je nešto važno propušteno?\\
+Ne, nije.
+\item Da li ima suštinskih grešaka i propusta?\\
+Neke od suštinskih grešaka su opisane u odeljku za krupne greške.
+\item Da li je naslov rada dobro izabran?\\
+Naslov je dobro izabran, ali predlog je nešto dodati da zainteresuje čitaoca.
+\item Da li sažetak sadrži prave podatke o radu?\\
+Da, sažetak rada opisuje šta se u daljem tekstu o ovoj temi može pročitati. Dodatni predlog je ubaciti motivaciju za pisanje ovog rada.
+\item Da li je rad lak-težak za čitanje?\\
+Određeni delovi rada su bili teški za čitanje, zbog već navedenih razloga.
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+Da, kod delova koji su bili teški za čitanje.
+\item Da li je u radu navedena odgovarajuća literatura?\\
+Da, navedena je odgovarajuća literatura, ali pošto treba imati referencu i na naučni rad, nisam sigurna da literatura označena brojem 16 ispunjava taj uslov.
+\item Da li su u radu reference korektno navedene?\\
+Slika 1 nema odgovarajući link. Sve ostalo je korektno navedeno.
+\item Da li je struktura rada adekvatna?\\
+Preporuka je da se sve oblasti podele na manje celine, putem podnaslova.
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\Da, rad sadrži elemente propisane uslovom seminarskog rada.
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+Da, slike i tabele su funkcionalne i adekvatne.
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+Malo sam upućena u oblast koju recenziram. Znanje koje sam stekla iz ove oblasti je putem kursa na fakultetu.
+
+\chapter{Recenzent \odgovor{--- ocena: 4} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+U radu je opisano kako je PHP nastao na osnovu jezika Perl, na koji način može da pristupa bazama podataka i zašto se koristi u veb programiranju. Navedeno je da ima podršku za funkcionalnu i objektno-orjentisanu paradigmu. Predstavljena su razvojna okruženja Laravel, CodeIgniter i Symfony i prikazane su specifičnosti ovog jezika (poput prostora imena, rada sa formama i korišćenja kolačića).
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+
+\textit{Poglavlje 3.}\\
+
+Celo poglavlje je konfuzno napisano. Deluje kao da je tekst samo preveden sa engleskog od reči do reči, pri čemu to nije baš najbolje urađeno. Mislim da treba preformulisati ovo poglavlje tako da bude jednostavnije za razumevanje i dati pojašnjenja za mnoge njegove delove. Na primer, šta znači da se PHP ‚‚koristi za skriptovanje komandne linije''? Šta znači da je PHP ‚‚privukao razvoj mnogih softverskih okvira koji pružaju građevinske blokove i strukturu dizajna za promovisanje brzog razvoja aplikacija''?
+
+‚‚Osim proširivanja samog jezika u obliku dodatnih biblioteka, proširenja pružaju način za poboljšanje brzine izvršavanja tamo gde je kritična i postoji prostor za poboljšanja korišćenjem pravom kompiliranog jezika.'' Ova rečenica mi, takođe, nije jasna.
+
+Što se tiče prevoda engleskih termina, mislim da je bolje reći ,,pisanje skriptova'' umesto ,,skriptiranje'' i ,,gradivni blokovi'' umesto ,,građevinski blokovi''. Takođe, trebalo bi pronaći i prevod za ,,veb hosting provajdera''.
+
+Pretpostavljam da je u delu u kom se govori o tome da se u traženoj PHP datoteci izvršava PHP runtime greškom ubačena referenca na zvanični sajt PHP-a u kom su samo nabrojane verzije jezika koje su do sada izašle.\\
+
+
+\textit{Poglavlje 4.}\\
+
+Mislim da bi u ovom poglavlju mogla biti uvedena kratka objašnjenja za neke od pojmova koji se koriste, a sa kojima čitaoci verovatno nisu upoznati. Na primer, piše da je PHP moguće integrisati sa IRC-om, a nigde nije objašnjeno šta je IRC. Takođe, nabrojani su serveri kojima PHP ima pristup, ali nije rečeno čemu oni služe (osim za SKLite).
+
+Možda bi bilo dobro malo detaljnije opisati Zend Engine. Na njegovom zvaničnom sajtu piše da se on koristi za kompilaciju PHP skriptova u memoriji, implementaciju svih standardnih struktura podataka koje se koriste u PHP-u, integraciju sa Java i .Net jezicima i upravljanje memorijom i resursima. Možda bi nešto od ovoga moglo da se doda u rad.
+
+I ovde, kod dela u kom se opisuje opcode cashe, pogrešno je stavljena referenca na sajt PHP-a u kom su nabrojane verzije jezika.
+
+\odgovor{Zend Engine je opisan malo detaljnije. Objašnjeno je njegovo svojstvo u PHP-u.}
+
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+
+Potrebno je proći kroz ceo rad i uskladiti u kom licu i vremenu se piše. U većem delu rada je pisano u trećem licu, osim u poglavljima 5, 7. i 8. u kojima ima i rečenica napisanih u prvom licu. U poglavlju 2. se u okviru istih pasusa koriste različita glagolska vremena. Takođe, bilo bi lepo prevesti sve engleske termine koji se javljaju u radu, a originalne nazive staviti u zagrade.
+
+Sledi spisak sitnih grešaka:\\\\
+
+\textit{Poglavlje 2.}
+\begin{itemize}
+\item ‚‚napretka'' umesto ‚‚napredka''
+
+\odgovor{Prepravljeno.}
+
+\item Rečenice ne treba počinjati godinom. Umesto rečenice ,,1997. godine su Zeev Suraski i Andi Gutmans redizajnirali PHP jezgro i objavili PHP/FI.'' bolje je napisati rečenicu ,,Zeev Suraski i Andi Gutmans su 1997. godine redizajnirali PHP jezgro i objavili PHP/FI.''. I narednu rečenicu treba preformulisati tako da ne počinje godinom.
+
+\odgovor{Ispravljene su sve rečenice koje su počinjale godinom. Struktura je promenjena dok je suština ostala ista.}
+
+\item ‚‚konzistentna'' umesto ‚‚kozistentna''
+
+\odgovor{Prepravljeno.}
+
+\item Rečenicu ‚‚Njegove glavne karakteristike su podržavanje većeg broja HTTP sesija i veb servera, izlazno baferovanje, takođe dodati su i novi jezički konstrukti.'' je bolje podeliti na dve rečenice: ‚‚Njegove glavne karakteristike su podržavanje većeg broja HTTP sesija i veb servera i izlazno baferovanje. Takođe, dodati su i novi jezički konstrukti.''
+
+\odgovor{Prepravili smo na dve manje rečenice.}
+
+\item Nije dobra referenca na sliku. Umesto na Sliku 1, referiše se na poglavlje 2.\\
+\end{itemize}
+
+\textit{Poglavlje 4.}
+\begin{itemize}
+\item ‚‚Razne besplatne i open-source biblioteke su uključene u izvornoj distribuciji mada ih koristi i u rezultujućim binarnim build-ovima PHP-a.'' Ko ih koristi? Možda treba ,, ... se koriste ... ''. Takođe, lepše bi bilo prevesti build-ove.
+\item ‚‚ugrađenim'' umesto ‚‚ugradenim''
+\item ‚‚sintezu govora'' umesto ‚‚sinteza govora''
+\item ‚‚kompajleri'' umesto ‚‚komplajleri''
+\item Lepše formulisati rečenicu ‚‚Podržava rekurziju, odnosno da funkcija poziva samu sebe, mada kod PHP-a je fokus na iteraciji.''. Možda nije ni potrebno objašnjavati šta je rekurzija.
+\item prevesti ,, callables''\\
+\end{itemize}
+
+\textit{Poglavlje 5.}
+\begin{itemize}
+\item Deo ,, ... i kod će korisniku biti ponovo upotrebljiv.'' se ne uklapa u ostatak rečenice. Bolje bi bilo: ,,Razvojno okruženje čini rad na zahtevnim projektima jednostavnijim, sugeriše na moguće greške i omogućava pisanje čistog koda i ponovnu upotrebljivost koda.''.
+
+\odgovor{Ova navedena rečenica je konfuzna koliko je i naša bila, pa smo našli kompromisno rešenje i potrudili se da rečenicu učinimo razumljivijom.}
+
+\item Prilikom predstavljanja CodeIgniter okruženja bolje je reći ‚‚odlikuje'' umesto ‚‚krasi''.
+
+\odgovor{Prepravljeno.}
+
+\item ‚‚tvorac ovog razvojnog okruženja'' umesto ‚‚tvorac ovog razvojno okruženje''\\
+
+\odgovor{Prepravljeno.}
+\end{itemize}
+
+\textit{Poglavlje 7.}
+\begin{itemize}
+\item Rečenicu ,,Vrednosti tih promenljivih se dodaju u URL stranicu, na primer ako bismo želeli da izlistamo sve studente koji se zovu Marko ...'' je bolje podeliti u dve rečenice: ,,Vrednosti tih promenljivih se dodaju u URL stranicu. Na primer ako bismo želeli da izlistamo sve studente koji se zovu Marko ...''.
+
+\odgovor{Podelili smo rečenicu na dva dela.}
+
+\item ,,U zavisnosti od akcije korisnika, dobijena informacija se može proveriti kod korisnika,
+zato se može proslediti kao zahtev serveru, eventualno na ponovnu proveru i kasniju obradu, a u zavisnosti od potrebe na kraju se može poslati i neka vrsta povratne informacije.'' Ova rečenica je čudno formulisana. Preformulisati je ili podeliti na više kraćih rečenica.
+
+\odgovor{Rečenica jeste bila konfuzna. Podelili smo je na tri rečenice i zadržali suštinu koju smo hteli da iskažemo.}
+
+\item ,,ma koju'' umesto ,,ma bilo koju''
+
+\odgovor{Prepravljeno.}
+
+\item U okviru glavnog teksta se navodi pojam memcached, a onda u zagradi ide njegov prevod. Bolje je prevod staviti u glavni tekst, a u zagradi engleski termin.\\
+\end{itemize}
+
+\textit{Poglavlje 9. (Zaključak)}
+\begin{itemize}
+\item ,,Pored toga rad sa bazama podataka je ono što većini njegovih korisnika olakšava rešavanje problema koje rešavaju.'' Izbaciti ,,koje rešavaju'' pošto je višak.
+
+\odgovor{Ovu rečenicu smo lepše formulisali i prepravili.}
+
+\end{itemize}
+
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\ Da, jer su pokrivene suštinski važne oblasti obuhvaćene temom.
+\item Da li je nešto važno propušteno?\\ Nije. Rad obuhvata sve stavke koje su navedene da treba pokriti u okviru teme koja se bavi programskim jezikom.
+\item Da li ima suštinskih grešaka i propusta?\\ Nema suštinskih grešaka. Samo je potrebno razumljivije napisati poglavlja 3. i 4.
+\item Da li je naslov rada dobro izabran?\\ Jeste, jer je to onaj naslov koji je zadat prilikom izbora teme.
+\item Da li sažetak sadrži prave podatke o radu?\\ Da.
+\item Da li je rad lak-težak za čitanje?\\ Generalno je lak, osim poglavlja 3. i 4. o kojima je bilo detaljnije pisano u delu ,,Krupne primedbe i sugestije''.
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\ Nije potrebno predznanje o jeziku, pošto akcenat rada nije na tome kako se programira u PHP-u, već na prikazu njegovih osnovnih mogućnosti i karakteristika.
+\item Da li je u radu navedena odgovarajuća literatura?\\ Da.
+\item Da li su u radu reference korektno navedene?\\ Nisu sve. O tome je bilo reči u tekstu iznad.
+\item Da li je struktura rada adekvatna?\\ Jeste.
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\ Da.
+\item Da li su slike i tabele funkcionalne i adekvatne?\\ Jesu. Samo je potrebno popraviti referencu na sliku 1.
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+
+Upućenost u oblast: srednje upućeni (c). PHP je rađen u okviru kursa Uvod u veb i internet tehnologije.
+
+
+
+\chapter{Dodatne izmene}
+%Ovde navedite ukoliko ima izmena koje ste uradili a koje vam recenzenti nisu tražili. 
+
+\end{document}
