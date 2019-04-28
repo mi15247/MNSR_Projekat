@@ -1,0 +1,11 @@
+\select@language {serbian}
+\contentsline {section}{\numberline {1}Uvod}{2}{section.1}
+\contentsline {section}{\numberline {2}Razvoj programskog jezika PHP}{2}{section.2}
+\contentsline {section}{\numberline {3}Mogu\IeC {\'c}nosti programskog jezika}{3}{section.3}
+\contentsline {section}{\numberline {4}Osnovne osobine, podr\IeC {\v z}ane paradigme i koncepti}{4}{section.4}
+\contentsline {section}{\numberline {5}Najpoznatija okru\IeC {\v z}enja}{6}{section.5}
+\contentsline {section}{\numberline {6}Instalacija}{6}{section.6}
+\contentsline {section}{\numberline {7}Primer k\^{o}da}{7}{section.7}
+\contentsline {section}{\numberline {8}Specifi\IeC {\v c}nosti}{8}{section.8}
+\contentsline {section}{\numberline {9}Zaklju\IeC {\v c}ak}{10}{section.9}
+\contentsline {section}{Literatura}{10}{section.9}
